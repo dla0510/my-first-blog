@@ -1,22 +1,22 @@
+{% load static %}
 <html>
 <head>
 	<title>dla's blog</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 <body>
 	<div>
 		<h1><a href="">Dla's Blog</a></h1>
 	</div>
 
-	<div>
-		<p>published: 17.07.2019, 17:33</p>
-		<h2><a href="">My first post</a></h2>
-		<p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-	</div>
-
-	<div>
-		<p>published: 17.07.2019, 17:34</p>
-		<h2><a href="">My second post</a></h2>
-		<p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-	</div>
+	{% for post in posts %}
+		<div>
+			<h1><a href="">{{ post.title }}</a></h1>
+			<p>published: {{ post.published_date }}</p>
+			<p>{{ post.text|linebreaksbr }}</p>
+		</div>
+	{% endfor %}
 </body>
 </html>
